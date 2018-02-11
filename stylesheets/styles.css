@@ -7,6 +7,11 @@ a {
   text-decoration: none;
 }
 
+.thumbnail-item + .thumbnail-item {
+  margin-top: 10px;
+  padding: 0;
+}
+
 .thumbnail-list {
   list-style: none;
 }
