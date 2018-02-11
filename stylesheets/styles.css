@@ -25,6 +25,10 @@ a {
   text-decoration: none;
 }
 
+.main-header {
+  flex: 0 1 auto;
+}
+
 .logo-text {
   background: white;
 
@@ -34,12 +38,18 @@ a {
   font-size: 37px;
 }
 
-.thumbnail-item + .thumbnail-item {
-  margin-top: 10px;
-  padding: 0;
+.main-content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
 }
 
+
 .thumbnail-list {
+  flex: 0 1 auto;
+  order: 2;
+  display: flex;
+  justify-content: space-between;
   list-style: none;
   padding: 0;
 
@@ -49,7 +59,8 @@ a {
 
 .thumbnail-item {
   display: inline-block;
-  width: 120px;
+  min-width: 120px;
+  max-width: 120px;
   border: 1px solid rgb(100%, 100%, 100%);
   border: 1px solid rgba(100%, 100%, 100%, 0.8);
 }
@@ -67,6 +78,10 @@ a {
   background: rgb(96, 125, 139);
   color: rgb(202, 238, 255);
   font-size: 18px;
+}
+
+.detail-image-container {
+  flex: 1 1 auto;
 }
 
 .detail-image {
