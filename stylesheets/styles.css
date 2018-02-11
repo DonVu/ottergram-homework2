@@ -56,3 +56,7 @@ a {
   color: rgb(202, 238, 255);
   font-size: 18px;
 }
+
+.detail-image {
+  width: 90%;
+}
