@@ -7,7 +7,12 @@ a {
   text-decoration: none;
 }
 
+.thumbnail-list {
+  list-style: none;
+}
+
 .thumbnail-item {
+  display: block;
   border: 1px solid rgb(100%, 100%, 100%);
   border: 1px solid rgba(100%, 100%, 100%, 0.8);
 }
