@@ -6,7 +6,12 @@ a {
   text-decoration: none;
 }
 
-.thumbnail-title{
+.thumbnail-image {
+  display: block;
+  width: 100%;
+}
+
+.thumbnail-title {
   display: block;
   margin: 0;
   padding: 4px 10px;
