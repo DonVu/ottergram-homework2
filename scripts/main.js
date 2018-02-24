@@ -11,3 +11,18 @@ function setDetails(imageUrl, titleText) {
   var detailTitle = document.querySelector(DETAIL_TITLE_SELECTOR);
   detailTitle.textContent = titleText;
 }
+
+function imageFromThumb(thumbnail) {
+  'use strict';
+  return thumbnail.getAttribute('data-image-url');
+}
+
+function titleFromThumb(thumbnail) {
+  'use strict';
+  return thumbnail.getAttribute('data-image-title');
+}
+
+function setDetailsFromThumb(thumbnail) {
+  'use strict';
+  setDetails(imageFromThumb(thumbnail), titleFromThumb(thumbnail));
+}
