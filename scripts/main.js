@@ -1,52 +1,52 @@
-var DETAIL_IMAGE_SELECTOR = '[data-image-role="target"]';
-var DETAIL_TITLE_SELECTOR = '[data-image-role="title"]';
-var THUMBNAIL_LINK_SELECTOR = '[data-image-role="trigger"]';
-var PREVIOUS_BUTTON_NAVIGATOR = '[data-previous-button="trigger"]';
-var NEXT_BUTTON_NAVIGATOR = '[data-next-button="trigger"]';
-var current_button_index = 0;
+var DETAIL_IMAGE_SELECTOR = "[data-image-role=\"target\"]",
+  DETAIL_TITLE_SELECTOR = "[data-image-role=\"title\"]",
+  THUMBNAIL_LINK_SELECTOR = "[data-image-role=\"trigger\"]",
+  PREVIOUS_BUTTON_NAVIGATOR = "[data-previous-button=\"trigger\"]",
+  NEXT_BUTTON_NAVIGATOR = "[data-next-button=\"trigger\"]",
+  current_button_index = 0;
 
 function setDetails(imageUrl, titleText) {
-  'use strict';
+  "use strict";
 
   var detailImage = document.querySelector(DETAIL_IMAGE_SELECTOR);
-  detailImage.setAttribute('src', imageUrl);
+  detailImage.setAttribute("src", imageUrl);
 
   var detailTitle = document.querySelector(DETAIL_TITLE_SELECTOR);
   detailTitle.textContent = titleText;
 }
 
 function imageFromThumb(thumbnail) {
-  'use strict';
-  return thumbnail.getAttribute('data-image-url');
+  "use strict";
+  return thumbnail.getAttribute("data-image-url");
 }
 
 function titleFromThumb(thumbnail) {
-  'use strict';
-  return thumbnail.getAttribute('data-image-title');
+  "use strict";
+  return thumbnail.getAttribute("data-image-title");
 }
 
 function setDetailsFromThumb(thumbnail) {
-  'use strict';
+  "use strict";
   setDetails(imageFromThumb(thumbnail), titleFromThumb(thumbnail));
 }
 
 function addThumbClickHandler(thumb) {
-  'use strict';
-  thumb.addEventListener('click', function (event) {
+  "use strict";
+  thumb.addEventListener("click", function (event) {
     event.preventDefault();
     setDetailsFromThumb(thumb);
   });
 }
 
 function getThumbnailsArray() {
-  'use strict';
+  "use strict";
   var thumbnails = document.querySelectorAll(THUMBNAIL_LINK_SELECTOR);
   var thumbnailArray = [].slice.call(thumbnails);
   return thumbnailArray;
 }
 
 function initializeEvents() {
-  'use strict';
+  "use strict";
   var thumbnails = getThumbnailsArray();
   thumbnails.forEach(addThumbClickHandler);
 
@@ -58,12 +58,12 @@ function initializeEvents() {
 }
 
 function getButton(button) {
-  'use strict';
+  "use strict";
   return document.querySelector(button);
 }
 
 function getPrevious() {
-  'use strict';
+  "use strict";
   var thumbnailArray = getThumbnailsArray();
   var thumbnailNum = thumbnailArray.length;
 
@@ -75,7 +75,7 @@ function getPrevious() {
 }
 
 function getNext() {
-  'use strict';
+  "use strict";
   var thumbnailArray = getThumbnailsArray();
   var thumbnailNum = thumbnailArray.length;
 
@@ -85,8 +85,8 @@ function getNext() {
 }
 
 function addButtonClickHandler(button) {
-  'use strict';
-  button.addEventListener('click', function(event) {
+  "use strict";
+  button.addEventListener("click", function () {
     if (button == PREVIOUS_BUTTON_NAVIGATOR) {
       getPrevious();
     } else {
