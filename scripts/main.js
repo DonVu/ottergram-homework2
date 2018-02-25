@@ -26,3 +26,11 @@ function setDetailsFromThumb(thumbnail) {
   'use strict';
   setDetails(imageFromThumb(thumbnail), titleFromThumb(thumbnail));
 }
+
+function addThumbClickHandler(thumb) {
+  'use strict';
+  thumb.addEventListener('click', function (event) {
+    event.preventDefault();
+    setDetailsFromThumb(thumb);
+  });
+}
