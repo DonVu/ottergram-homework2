@@ -1,6 +1,9 @@
 var DETAIL_IMAGE_SELECTOR = '[data-image-role="target"]';
 var DETAIL_TITLE_SELECTOR = '[data-image-role="title"]';
 var THUMBNAIL_LINK_SELECTOR = '[data-image-role="trigger"]';
+var PREVIOUS_BUTTON_NAVIGATOR = '[data-previous-button="trigger"]';
+var NEXT_BUTTON_NAVIGATOR = '[data-next-button="trigger"]';
+var current_button_index = 0;
 
 function setDetails(imageUrl, titleText) {
   'use strict';
@@ -46,6 +49,50 @@ function initializeEvents() {
   'use strict';
   var thumbnails = getThumbnailsArray();
   thumbnails.forEach(addThumbClickHandler);
+
+  var previousButton = getButton(PREVIOUS_BUTTON_NAVIGATOR);
+  addButtonClickHandler(previousButton);
+
+  var nextButton = getButton(NEXT_BUTTON_NAVIGATOR);
+  addButtonClickHandler(nextButton);
+}
+
+function getButton(button) {
+  'use strict';
+  return document.querySelector(button);
+}
+
+function getPrevious() {
+  'use strict';
+  var thumbnailArray = getThumbnailsArray();
+  var thumbnailNum = thumbnailArray.length;
+
+  if (--current_button_index < 0) {
+    current_button_index = thumbnailNum - 1;
+  }
+
+  setDetailsFromThumb(thumbnailArray[current_button_index]);
+}
+
+function getNext() {
+  'use strict';
+  var thumbnailArray = getThumbnailsArray();
+  var thumbnailNum = thumbnailArray.length;
+
+  current_button_index = ++current_button_index % thumbnailNum;
+
+  setDetailsFromThumb(thumbnailArray[current_button_index]);
+}
+
+function addButtonClickHandler(button) {
+  'use strict';
+  button.addEventListener('click', function(event) {
+    if (button == PREVIOUS_BUTTON_NAVIGATOR) {
+      getPrevious();
+    } else {
+      getNext();
+    }
+  });
 }
 
 initializeEvents();
